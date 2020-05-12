@@ -13,7 +13,7 @@ namespace TextWrapping
 
         public WordWrapper(string inputPath, int maxLength)
         {
-            this.inputPath = inputPath;
+            this.inputPath = InputPathValidation(inputPath);
             this.maxLength = maxLength;
             outputPath = GenerateOutputPath();
         }
@@ -72,6 +72,14 @@ namespace TextWrapping
                 Path.GetExtension(inputPath)
             );
             return Path.Combine(Path.GetDirectoryName(inputPath), outputFilename);
+        }
+        private string InputPathValidation(string inputPath)
+        {
+            if (!File.Exists(inputPath))
+            {
+                throw new Exception("Input file does not exist!");
+            }
+            return inputPath;
         }
     }
 }
