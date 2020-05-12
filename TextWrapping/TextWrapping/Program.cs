@@ -12,7 +12,8 @@ namespace TextWrapping
                 ArgumentSanitizer.SanitizeArgsArray(args);
                 string inputPath = ArgumentSanitizer.SanitizeInputPathArgument(args[0]);
                 int maxLength = ArgumentSanitizer.SanitizeMaxLengthArgument(args[1]);
-
+                var wordWrapper = new WordWrapper(inputPath, maxLength);
+                wordWrapper.WrapText();
                 Console.WriteLine("Shuting down...");
             }
             catch(Exception e)
