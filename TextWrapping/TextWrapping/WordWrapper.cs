@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace TextWrapping
 {
@@ -10,7 +9,7 @@ namespace TextWrapping
     /// </summary>
     class WordWrapper
     {
-        private string outputPath;
+        public string outputPath { get; }
         private string inputPath;
         private int maxLength;
 
