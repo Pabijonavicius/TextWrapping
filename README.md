@@ -39,7 +39,18 @@ Case: 3
     Max Line Length:
         -10
     Output:
-        Should Crash of invalid length.
-        
+        Should crash because of invalid length.
+
+# Shortcuts
+#First
+----------------------
+    Decided to implement simple argument validation class,
+    it will ensure that passed arguments are valid to use for Word Wrapping:
+        - Input file path (First Argument),
+        - Max Line Length (Second Argument).
+    It would be better to implment some kind of flag attributes, this would provide better usability for example: 
+         -i or --input-path: to specify desired input file,
+         -m or --max-length: to specify desired maximum line length.
+
 # Feature List
     N/A.
