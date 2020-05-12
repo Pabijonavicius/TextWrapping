@@ -7,30 +7,18 @@ namespace TextWrapping
     {
         static void Main(string[] args)
         {
-            string inputPath;
-            int maxLength;
-            if(args.Length != 2)
-            {
-                throw new Exception("Input file path, and maxLength arguments must be passed!");
-            }
-            if (!File.Exists(args[0]))
-            {
-                throw new Exception("Input file does not exist!");
-            } else
-            {
-                inputPath = args[0];
-            }
             try
             {
-                maxLength = Convert.ToInt32(args[1]);
-            } 
-            catch (Exception e)
-            {
-                throw new Exception("Converting error..");
-            }
+                ArgumentSanitizer.SanitizeArgsArray(args);
+                string inputPath = ArgumentSanitizer.SanitizeInputPathArgument(args[0]);
+                int maxLength = ArgumentSanitizer.SanitizeMaxLengthArgument(args[1]);
 
-            Console.WriteLine(inputPath);
-            Console.WriteLine(maxLength);
+                Console.WriteLine("Shuting down...");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
