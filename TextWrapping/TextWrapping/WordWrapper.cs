@@ -14,7 +14,7 @@ namespace TextWrapping
         public WordWrapper(string inputPath, int maxLength)
         {
             this.inputPath = InputPathValidation(inputPath);
-            this.maxLength = maxLength;
+            this.maxLength = MaxLengthValidation(maxLength);
             outputPath = GenerateOutputPath();
         }
 
@@ -80,6 +80,14 @@ namespace TextWrapping
                 throw new Exception("Input file does not exist!");
             }
             return inputPath;
+        }
+        private int MaxLengthValidation(int maxLength)
+        {
+            if (maxLength <= 0)
+            {
+                throw new Exception("MaxLength Attribute must higher than 0");
+            }
+            return maxLength;
         }
     }
 }
