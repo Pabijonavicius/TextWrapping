@@ -18,38 +18,50 @@ namespace TextWrapping
             outputPath = GenerateOutputPath();
         }
 
-        public void WrapText()
+        private List<string> WrapLine(string line, int maxLength)
         {
-            using (var streamReader = new StreamReader(inputPath))
+            List<string> lines = new List<string>();
+            for (int i = 0; i < line.Length; i += maxLength)
             {
+                string l;
+                try
+                {
+                    l = line.Substring(i, maxLength);
+                }
+                catch
+                {
+                    l = line.Substring(i);
+                }
+
+                lines.Add(l);
+            }
+            return lines;
+        }
+
+        public void  WrapText()
+        {
+            // It would be better for performance, to read data in chunks (using some kind of buffer)
+            // Line parsing solution takes additional time, writing directly a chunk should be faster
+            try
+            {
+                using var streamReader = new StreamReader(inputPath);
+                using var streamWriter = new StreamWriter(outputPath, false, streamReader.CurrentEncoding);
                 string line = streamReader.ReadLine();
-                var lines = new List<string>();
+
                 while (line != null)
                 {
-                    for (int i = 0; i < line.Length; i += maxLength)
+                    var wrappedLines = WrapLine(line, maxLength);
+                    foreach (var l in wrappedLines)
                     {
-                        string l;
-                        try
-                        {
-                            l = line.Substring(i, maxLength);
-                        }
-                        catch
-                        {
-                            l = line.Substring(i);
-                        }
-
-                        lines.Add(l);
+                        streamWriter.WriteLine(l);
                     }
                     line = streamReader.ReadLine();
                 }
-                using (var streamWritter = new StreamWriter(outputPath, false, streamReader.CurrentEncoding))
-                {
-                    foreach (var l in lines)
-                    {
-                        streamWritter.WriteLine(l);
-                    }
-                }
-     
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error Occurred...");
+                Console.WriteLine(e.Message);
             }
         }
         private string GenerateOutputPath()
