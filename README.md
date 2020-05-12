@@ -42,33 +42,37 @@ Case: 3
         Should crash because of invalid length.
 
 # Shortcuts
+
 #First
 ----------------------
-    Decided to implement simple argument validation class,
-    it will ensure that passed arguments are valid to use for Word Wrapping:
+Decided to implement simple argument validation class,
+
+it will ensure that passed arguments are valid to use for Word Wrapping:
         - Input file path (First Argument),
         - Max Line Length (Second Argument).
-    It would be better to implment some kind of flag attributes, this would provide better usability for example: 
+		
+It would be better to implment some kind of flag attributes, this would provide better usability for example: 
          -i or --input-path: to specify desired input file,
          -m or --max-length: to specify desired maximum line length.
 #Second
 ----------------------
-    For faster development decided to process each line manually, better approach maybe would be, to read data in small chunks instead of manually formatting the lines.
+For faster development decided to process each line manually, better approach maybe would be, to read data in small chunks instead of manually formatting the lines.
 #Third
 ----------------------
-    When dumping output, program formats the output path: {inputPath} + {-output.txt}, something better could be done, for example writting to temp file, and then maybe removing original file and renaming temp file which original's file name.
+When dumping output, program formats the output path: {inputPath} + {-output.txt}, something better could be done, for example writting to temp file, and then maybe removing original file and renaming temp file which original's file name.
     
-    In the task there was no strict rule to represent output in the same file, that's why decided to write outputs to a different file for faster development. 
+In the task there was no strict rule to represent output in the same file, that's why decided to write outputs to a different file for faster development. 
     
-    Also, downside to this, if a file is very large, than a lot of space would be wasted.
+Also, downside to this, if a file is very large, than a lot of space would be wasted.
     
-    Reading data and processing it in chunks, using some kind of buffer would be more efficent but it would take more time to develop.
+Reading data and processing it in chunks, using some kind of buffer would be more efficent but it would take more time to develop.
     
     
 # Feature List
 ### WordWrapper 
  > A class that implements simple word wrapping functionality
- -  WordWrapper.WrapText - handles text wrapping feature
+ >
+ >  -  WordWrapper.WrapText - handles text wrapping feature
 ### ArgumentSanitizer 
  > A Helper class responsible for various cmd argument validations.
  - SanitizeArgsArray - Ensures that no more arguments are being passed than it is needed.
@@ -76,19 +80,15 @@ Case: 3
  - SanitizeMaxLengthArgument - Ensures that valid maximum length is being passed.
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
+# Usage
+1. Navigate to the project solution folder.
+2. Build project.
+3. Navigate to the build folder of the project: ![image-20200512151240953](Assets/image-20200512151240953.png)
+4. Open command line ![image-20200512151742191](Assets/image-20200512151742191.png)
+5. Copy the path of TextWrapping executable
+6. Perform TextWrapping:![image-20200512152416109](Assets/image-20200512152416109.png)
+7. Press enter: ![image-20200512153850591](Assets/image-20200512153850591.png)
+8. The output:![image-20200512153958380](Assets/image-20200512153958380.png)
+
+
