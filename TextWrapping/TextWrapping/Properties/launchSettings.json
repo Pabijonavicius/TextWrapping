@@ -2,7 +2,7 @@
   "profiles": {
     "TextWrapping": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\chnico\\Desktop\\TextWrapping\\TextWrapping\\TextWrapping\\Input.txt 7"
+      "commandLineArgs": "C:\\Users\\chnico\\Desktop\\TextWrapping\\TextWrapping\\TextWrapping\\Input.txt 4"
     }
   }
 }
