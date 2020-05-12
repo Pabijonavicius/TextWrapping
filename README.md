@@ -51,6 +51,9 @@ Case: 3
     It would be better to implment some kind of flag attributes, this would provide better usability for example: 
          -i or --input-path: to specify desired input file,
          -m or --max-length: to specify desired maximum line length.
+#Second
+----------------------
+    For faster development decided to process each line manually, better approach maybe would be, to read data in small chunks instead of manually formatting the lines.
 
 # Feature List
     N/A.

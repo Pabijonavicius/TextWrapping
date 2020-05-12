@@ -7,6 +7,7 @@ namespace TextWrapping
 {
     class WordWrapper
     {
+        private string outputPath;
         private string inputPath;
         private int maxLength;
 
@@ -14,6 +15,7 @@ namespace TextWrapping
         {
             this.inputPath = inputPath;
             this.maxLength = maxLength;
+            outputPath = GenerateOutputPath();
         }
 
         public void WrapText()
@@ -40,12 +42,24 @@ namespace TextWrapping
                     }
                     line = streamReader.ReadLine();
                 }
-
-                foreach (var l in lines)
+                using (var streamWritter = new StreamWriter(outputPath, false, streamReader.CurrentEncoding))
                 {
-                    Console.WriteLine(l);
+                    foreach (var l in lines)
+                    {
+                        streamWritter.WriteLine(l);
+                    }
                 }
+     
             }
+        }
+        private string GenerateOutputPath()
+        {
+            string outputFilename = string.Format("{0}{1}{2}",
+                Path.GetFileNameWithoutExtension(inputPath),
+                "-output",
+                Path.GetExtension(inputPath)
+            );
+            return Path.Combine(Path.GetDirectoryName(inputPath), outputFilename);
         }
     }
 }
